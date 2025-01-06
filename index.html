@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>王者代练 - 专业上分</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Microsoft YaHei", sans-serif;
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://game.gtimg.cn/images/yxzj/web201706/images/comm/k_bg.jpg")
+            no-repeat center center fixed;
+        background-size: cover;
+        color: #fff;
+        min-height: 100vh;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 100%;
+        padding: 20px;
+        margin: 0 auto;
+        max-width: 600px;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+        animation: fadeIn 1s ease-in;
+        padding: 30px 0;
+      }
+
+      .header h1 {
+        font-size: 32px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        margin-bottom: 15px;
+        background: linear-gradient(45deg, #ffd700, #ff6b6b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 2px;
+      }
+
+      .header p {
+        font-size: 16px;
+        opacity: 0.9;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        letter-spacing: 1px;
+      }
+
+      .service-card {
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 25px;
+        transform: translateY(50px);
+        opacity: 0;
+        animation: slideUp 0.5s ease forwards;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .service-card h2 {
+        color: #ffd700;
+        margin-bottom: 15px;
+        font-size: 24px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        letter-spacing: 1px;
+      }
+
+      .service-card p {
+        margin-bottom: 12px;
+        font-size: 15px;
+        opacity: 0.9;
+        line-height: 1.6;
+      }
+
+      .price {
+        color: #ff4d4d;
+        font-size: 28px;
+        font-weight: bold;
+        margin: 20px 0;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 15px;
+        margin-top: 25px;
+        padding: 0 20px;
+      }
+
+      .contact-btn {
+        flex: 1;
+        text-align: center;
+        padding: 10px 0;
+        border-radius: 25px;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        max-width: 110px;
+        margin: 0 auto;
+        border: none;
+        outline: none;
+        letter-spacing: 1px;
+      }
+
+      .contact-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        filter: brightness(1.1);
+      }
+
+      .contact-btn:active {
+        transform: scale(0.95) translateY(0);
+      }
+
+      .wx-btn {
+        background: linear-gradient(45deg, #07c160, #0aad56);
+      }
+
+      .qq-btn {
+        background: linear-gradient(45deg, #12b7f5, #0c95c9);
+      }
+
+      .zfb-btn {
+        background: linear-gradient(45deg, #1677ff, #00b4ff);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .contact-info {
+        text-align: center;
+        margin-top: 50px;
+        padding: 30px;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .contact-info p {
+        margin: 12px 0;
+        font-size: 16px;
+        opacity: 0.9;
+        letter-spacing: 0.5px;
+      }
+
+      .contact-info p:first-child {
+        font-size: 22px;
+        color: #ffd700;
+        margin-bottom: 20px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        letter-spacing: 2px;
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 15px;
+        }
+
+        .header h1 {
+          font-size: 28px;
+        }
+
+        .service-card {
+          padding: 25px;
+        }
+
+        .price {
+          font-size: 24px;
+        }
+      }
+    </style>
+    <script>
+      async function copyContact(type) {
+        const contact = type === "wx" ? "li642431742" : "642431742";
+
+        try {
+          await navigator.clipboard.writeText(contact);
+          if (type === "wx") {
+            alert("已复制微信号：" + contact + "\n即将打开微信");
+            window.location.href = "weixin://";
+          } else {
+            window.location.href =
+              "mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=642431742";
+          }
+        } catch (err) {
+          const textarea = document.createElement("textarea");
+          textarea.value = contact;
+          textarea.style.position = "fixed";
+          textarea.style.opacity = "0";
+          document.body.appendChild(textarea);
+          textarea.select();
+
+          try {
+            document.execCommand("copy");
+            if (type === "wx") {
+              alert("已复制微信号：" + contact + "\n即将打开微信");
+              window.location.href = "weixin://";
+            } else {
+              window.location.href =
+                "mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=642431742";
+            }
+          } catch (err) {
+            alert("复制失败，请手动复制：" + contact);
+          } finally {
+            document.body.removeChild(textarea);
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>王者荣耀代练</h1>
+        <p>专业上分团队 · 安全可靠</p>
+      </header>
+
+      <div class="service-card" style="animation-delay: 0.2s">
+        <h2>排位代练</h2>
+        <p>专业代练，稳定上分</p>
+        <p class="price">30元/星</p>
+        <div class="btn-group">
+          <button
+            onclick="copyContact('wx')"
+            class="contact-btn wx-btn"
+            type="button"
+          >
+            加微信
+          </button>
+          <button
+            onclick="copyContact('qq')"
+            class="contact-btn qq-btn"
+            type="button"
+          >
+            加QQ
+          </button>
+        </div>
+      </div>
+
+      <div class="service-card" style="animation-delay: 0.4s">
+        <h2>巅峰赛代打</h2>
+        <p>快速完成巅峰赛</p>
+        <p class="price">198元/10场</p>
+        <div class="btn-group">
+          <button
+            onclick="copyContact('wx')"
+            class="contact-btn wx-btn"
+            type="button"
+          >
+            加微信
+          </button>
+          <button
+            onclick="copyContact('qq')"
+            class="contact-btn qq-btn"
+            type="button"
+          >
+            加QQ
+          </button>
+        </div>
+      </div>
+
+      <div class="service-card" style="animation-delay: 0.6s">
+        <h2>陪玩服务</h2>
+        <p>专业陪玩，边玩边学</p>
+        <p class="price">50元/小时</p>
+        <div class="btn-group">
+          <button
+            onclick="copyContact('wx')"
+            class="contact-btn wx-btn"
+            type="button"
+          >
+            加微信
+          </button>
+          <button
+            onclick="copyContact('qq')"
+            class="contact-btn qq-btn"
+            type="button"
+          >
+            加QQ
+          </button>
+        </div>
+      </div>
+
+      <div class="contact-info">
+        <p>联系方式</p>
+        <p>QQ：642431742</p>
+        <p>24小时在线接单</p>
+      </div>
+    </div>
+  </body>
+</html>
